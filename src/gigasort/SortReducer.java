@@ -20,8 +20,8 @@ public class SortReducer extends Reducer<LongWritable, NullWritable, LongWritabl
         for (NullWritable ignored : values) {
             if (counter % 1000 == 0) {
                 context.write(key, NullWritable.get());
-                counter++;
             }
+            counter++;
         }
     }
 }
