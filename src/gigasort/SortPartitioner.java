@@ -17,6 +17,9 @@ public class SortPartitioner extends Partitioner<LongWritable, NullWritable> {
         Long key = longWritable.get();
         Double partition = Math.floor(key / range);
 
+        if (partition.intValue() == Gigasort.REDUCER_NUM) {//handles corner case
+            return Gigasort.REDUCER_NUM - 1;
+        }
         return partition.intValue();
     }
 }
