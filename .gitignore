@@ -44,7 +44,9 @@ Temporary Items
 
 .idea/
 .class
-out/production
+out
 .iml
 input/
 *.iml
+output/
+build
