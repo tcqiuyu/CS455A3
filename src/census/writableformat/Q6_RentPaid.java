@@ -25,7 +25,6 @@ public class  Q6_RentPaid extends CensusInfoFormat {
     }
 
     public Text getState() {
-
         return state;
     }
 

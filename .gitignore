@@ -46,7 +46,7 @@ Temporary Items
 .class
 out
 .iml
-input/
+/input/
 *.iml
-output/
+/output/
 build
