@@ -13,10 +13,13 @@ import java.io.IOException;
  */
 public class Q4_RuralAndUrban extends CensusInfoFormat {
 
-    private Text state;
-    private LongWritable rural;
-    private LongWritable urban;
-    private IntWritable type = MessageType.Q4_RuralAndUrban;
+    private final IntWritable type = MessageType.Q4_RuralAndUrban;
+    private Text state = new Text();
+    private LongWritable rural = new LongWritable();
+    private LongWritable urban = new LongWritable();
+
+    public Q4_RuralAndUrban() {
+    }
 
     public Q4_RuralAndUrban(String lineString) {
         state = getStateAbbr(lineString);
@@ -69,6 +72,6 @@ public class Q4_RuralAndUrban extends CensusInfoFormat {
 
     @Override
     public Text getKey() {
-        return new Text(state.toString() + "_Q4");
+        return new Text("Q4_" + state.toString());
     }
 }

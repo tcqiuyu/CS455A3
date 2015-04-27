@@ -16,10 +16,17 @@ import java.io.IOException;
 
 public class Q1_RentAndOwned extends CensusInfoFormat {
 
+    private final IntWritable type = MessageType.Q1_RentAndOwned;
     private Text state;
     private LongWritable rent;
     private LongWritable owned;
-    private IntWritable type = MessageType.Q1_RentAndOwned;
+
+
+    public Q1_RentAndOwned() {
+        state = new Text();
+        rent = new LongWritable();
+        owned = new LongWritable();
+    }
 
     public Q1_RentAndOwned(String lineString) {
         state = getStateAbbr(lineString);

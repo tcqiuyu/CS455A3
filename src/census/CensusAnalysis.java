@@ -55,6 +55,8 @@ public class CensusAnalysis {
         MultipleOutputs.addNamedOutput(census_Job, "Q8", TextOutputFormat.class, Text.class, Text.class);
 
         census_Job.setOutputFormatClass(TextOutputFormat.class);
+        census_Job.setOutputKeyClass(Text.class);
+        census_Job.setOutputValueClass(Text.class);
 
         census_Job.waitForCompletion(true);
     }

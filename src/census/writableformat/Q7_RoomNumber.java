@@ -13,11 +13,13 @@ import java.io.IOException;
  */
 public class Q7_RoomNumber extends CensusInfoFormat {
 
-    private Text state;
-    private LongWritable roomCount;
-    private LongWritable houseCount;
-    private IntWritable type = MessageType.Q7_RoomNumber;
+    private final IntWritable type = MessageType.Q7_RoomNumber;
+    private Text state = new Text();
+    private LongWritable roomCount = new LongWritable();
+    private LongWritable houseCount = new LongWritable();
 
+    public Q7_RoomNumber(){
+    }
 
     public Q7_RoomNumber(String lineString) {
         state = getStateAbbr(lineString);

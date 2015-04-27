@@ -12,12 +12,15 @@ import java.io.IOException;
 /**
  * Created by Qiu on 4/26/15.
  */
-public class  Q6_RentPaid extends CensusInfoFormat {
+public class Q6_RentPaid extends CensusInfoFormat {
 
-    private Text state;
-    private LongArrayWritable rentInfoArray;
-    private IntWritable type = MessageType.Q6_RentPaid;
+    private final IntWritable type = MessageType.Q6_RentPaid;
+    private Text state = new Text();
+    private LongArrayWritable rentInfoArray = new LongArrayWritable();
 
+    public Q6_RentPaid() {
+    }
+    
     public Q6_RentPaid(String lineString) {
         state = getStateAbbr(lineString);
         LongWritable[] rentInfos = getFieldArray(lineString, LineIndex.RENT_PAID_START, LineIndex.RENT_PAID_FIELDS_COUNT);

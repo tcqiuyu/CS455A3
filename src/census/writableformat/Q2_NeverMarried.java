@@ -10,21 +10,28 @@ import java.io.IOException;
 
 /**
  * Created by Qiu on 4/25/15.
+ * Custom structure for Question 2
+ * Used to calculate percentage of male/female that are never married
  */
+
 public class Q2_NeverMarried extends CensusInfoFormat {
-    private Text state;
-    private LongWritable maleNeverMarried;
-    private LongWritable femaleNeverMarried;
-    private LongWritable totalMale;
-    private LongWritable totalFemale;
-    private IntWritable type = MessageType.Q2_NeverMarried;
+    private final IntWritable type = MessageType.Q2_NeverMarried;
+    private Text state = new Text();
+    private LongWritable maleNeverMarried = new LongWritable();
+    private LongWritable femaleNeverMarried = new LongWritable();
+    private LongWritable totalMale = new LongWritable();
+    private LongWritable totalFemale = new LongWritable();
+
+    public Q2_NeverMarried() {
+    }
+
 
     public Q2_NeverMarried(String lineString) {
         state = getStateAbbr(lineString);
         maleNeverMarried = getContinuousFieldSum(lineString, LineIndex.MALE_NEVER_MARRIED_START, LineIndex.MALE_NEVER_MARRIED_FIELDS_COUNT);
         femaleNeverMarried = getContinuousFieldSum(lineString, LineIndex.FEMALE_NEVER_MARRIED_START, LineIndex.FEMALE_NEVER_MARRIED_FIELDS_COUNT);
-        totalMale = getContinuousFieldSum(lineString, LineIndex.TOTAL_MALE_START, LineIndex.TOTAL_MALE_FIELDS_COUNT);
-        totalFemale = getContinuousFieldSum(lineString, LineIndex.TOTAL_FEMALE_START, LineIndex.TOTAL_FEMALE_FIELDS_COUNT);
+        totalMale = getContinuousFieldSum(lineString, LineIndex.TOTAL_MALE_MARITAL_STATUS_START, LineIndex.TOTAL_MALE_MARITAL_STATUS_FIELDS_COUNT);
+        totalFemale = getContinuousFieldSum(lineString, LineIndex.TOTAL_FEMALE_MARITAL_STATUS_START, LineIndex.TOTAL_FEMALE_MARITAL_STATUS_FIELDS_COUNT);
     }
 
     public Text getState() {
@@ -35,37 +42,21 @@ public class Q2_NeverMarried extends CensusInfoFormat {
         return maleNeverMarried;
     }
 
-    public void setMaleNeverMarried(LongWritable maleNeverMarried) {
-        this.maleNeverMarried = maleNeverMarried;
-    }
-
     public LongWritable getFemaleNeverMarried() {
         return femaleNeverMarried;
-    }
-
-    public void setFemaleNeverMarried(LongWritable femaleNeverMarried) {
-        this.femaleNeverMarried = femaleNeverMarried;
-    }
-
-    @Override
-    public IntWritable getType() {
-        return type;
     }
 
     public LongWritable getTotalMale() {
         return totalMale;
     }
 
-    public void setTotalMale(LongWritable totalMale) {
-        this.totalMale = totalMale;
-    }
-
     public LongWritable getTotalFemale() {
         return totalFemale;
     }
 
-    public void setTotalFemale(LongWritable totalFemale) {
-        this.totalFemale = totalFemale;
+    @Override
+    public IntWritable getType() {
+        return type;
     }
 
     @Override

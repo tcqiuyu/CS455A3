@@ -14,9 +14,12 @@ import java.io.IOException;
  */
 public class Q5_OwnerOccupiedHouseValue extends CensusInfoFormat {
 
-    private Text state;
-    private LongArrayWritable values;
-    private IntWritable type = MessageType.Q5_OwnerOccupiedHouseValue;
+    private final IntWritable type = MessageType.Q5_OwnerOccupiedHouseValue;
+    private Text state = new Text();
+    private LongArrayWritable values = new LongArrayWritable();
+
+    public Q5_OwnerOccupiedHouseValue() {
+    }
 
     public Q5_OwnerOccupiedHouseValue(String lineString) {
         state = getStateAbbr(lineString);

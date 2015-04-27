@@ -31,6 +31,7 @@ public class CensusMapper extends Mapper<LongWritable, Text, Text, CensusInfoFor
                 context.write(q2.getKey(), new CensusInfoFormat(q2));
                 context.write(q3.getKey(), new CensusInfoFormat(q3));
                 context.write(q8.getKey(), new CensusInfoFormat(q8));
+                break;
             case 2:
                 Q1_RentAndOwned q1 = new Q1_RentAndOwned(lineString);
                 Q4_RuralAndUrban q4 = new Q4_RuralAndUrban(lineString);
@@ -42,7 +43,9 @@ public class CensusMapper extends Mapper<LongWritable, Text, Text, CensusInfoFor
                 context.write(q5.getKey(), new CensusInfoFormat(q5));
                 context.write(q6.getKey(), new CensusInfoFormat(q6));
                 context.write(q7.getKey(), new CensusInfoFormat(q7));
+                break;
             default:
+                break;
         }
 
     }

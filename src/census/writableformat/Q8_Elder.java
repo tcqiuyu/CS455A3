@@ -13,10 +13,13 @@ import java.io.IOException;
  */
 public class Q8_Elder extends CensusInfoFormat {
 
-    private Text state;
-    private LongWritable elderCount;
-    private LongWritable totalPersonsCount;
-    private IntWritable type = MessageType.Q8_Elder;
+    private final IntWritable type = MessageType.Q8_Elder;
+    private Text state = new Text();
+    private LongWritable elderCount = new LongWritable();
+    private LongWritable totalPersonsCount = new LongWritable();
+
+    public Q8_Elder() {
+    }
 
     public Q8_Elder(String lineString) {
         state = getStateAbbr(lineString);

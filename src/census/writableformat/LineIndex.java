@@ -21,8 +21,13 @@ public interface LineIndex {
 
     public static int MALE_NEVER_MARRIED_START = 4422;
     public static int MALE_NEVER_MARRIED_FIELDS_COUNT = 1;
-    public static int FEMALE_NEVER_MARRIED_START = 4440;
+    public static int FEMALE_NEVER_MARRIED_START = 4467;
     public static int FEMALE_NEVER_MARRIED_FIELDS_COUNT = 1;
+    public static int TOTAL_MALE_MARITAL_STATUS_START = 4422;
+    public static int TOTAL_MALE_MARITAL_STATUS_FIELDS_COUNT = 4;
+    public static int TOTAL_FEMALE_MARITAL_STATUS_START = 4467;
+    public static int TOTAL_FEMALE_MARITAL_STATUS_FIELDS_COUNT = 4;
+
 
     public static int MALE_AGE_LESS_THAN_18_START = 3864;
     public static int MALE_AGE_LESS_THAN_18_FIELDS_COUNT = 13;
@@ -36,10 +41,10 @@ public interface LineIndex {
     public static int FEMALE_AGE_19_TO_29_FIELDS_COUNT = 5;
     public static int FEMALE_AGE_30_TO_39_START = FEMALE_AGE_19_TO_29_START + FEMALE_AGE_19_TO_29_FIELDS_COUNT * FIELD_SIZE;
     public static int FEMALE_AGE_30_TO_39_FIELDS_COUNT = 2;
-    public static int TOTAL_MALE_START = 363;
-    public static int TOTAL_MALE_FIELDS_COUNT = 1;
-    public static int TOTAL_FEMALE_START = 372;
-    public static int TOTAL_FEMALE_FIELDS_COUNT = 1;
+    public static int TOTAL_MALE_START = 3864;
+    public static int TOTAL_MALE_FIELDS_COUNT = 31;
+    public static int TOTAL_FEMALE_START = 4143;
+    public static int TOTAL_FEMALE_FIELDS_COUNT = 31;
 
     public static int HOUSE_URBAN_START = 1857;
     public static int HOUSE_URBAN_FIELDS_COUNT = 2;
@@ -57,6 +62,6 @@ public interface LineIndex {
 
     public static int ELDER_PERSON_START = 1065;
     public static int ELDER_PERSON_FIELDS_COUNT = 1;
-    public static int TOTAL_PERSON_START = 300;
-    public static int TOTAL_PERSON_FIELDS_COUNT = 1;
+    public static int TOTAL_PERSON_START = 795;
+    public static int TOTAL_PERSON_FIELDS_COUNT = 31;
 }

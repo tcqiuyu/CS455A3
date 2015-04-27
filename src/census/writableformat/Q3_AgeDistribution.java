@@ -13,16 +13,19 @@ import java.io.IOException;
  */
 public class Q3_AgeDistribution extends CensusInfoFormat {
 
-    private Text state;
-    private LongWritable maleLessThan18;
-    private LongWritable male19To29;
-    private LongWritable male30To39;
-    private LongWritable femaleLessThan18;
-    private LongWritable female19To29;
-    private LongWritable female30To39;
-    private LongWritable totalMale;
-    private LongWritable totalFemale;
-    private IntWritable type = MessageType.Q3_AgeDistribution;
+    private final IntWritable type = MessageType.Q3_AgeDistribution;
+    private Text state = new Text();
+    private LongWritable maleLessThan18 = new LongWritable();
+    private LongWritable male19To29 = new LongWritable();
+    private LongWritable male30To39 = new LongWritable();
+    private LongWritable femaleLessThan18 = new LongWritable();
+    private LongWritable female19To29 = new LongWritable();
+    private LongWritable female30To39 = new LongWritable();
+    private LongWritable totalMale = new LongWritable();
+    private LongWritable totalFemale = new LongWritable();
+
+    public Q3_AgeDistribution() {
+    }
 
     public Q3_AgeDistribution(String lineString) {
         state = getStateAbbr(lineString);
