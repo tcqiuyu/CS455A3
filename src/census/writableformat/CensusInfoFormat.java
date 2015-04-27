@@ -5,7 +5,7 @@ import org.apache.hadoop.io.*;
 /**
  * Created by Qiu on 4/25/15.
  */
-public abstract class CensusInfoFormat extends GenericWritable {
+public class CensusInfoFormat extends GenericWritable {
 
     public static Class[] CLASSES = new Class[]{
             Q1_RentAndOwned.class,
@@ -15,11 +15,23 @@ public abstract class CensusInfoFormat extends GenericWritable {
             Q5_OwnerOccupiedHouseValue.class,
             Q6_RentPaid.class,
             Q7_RoomNumber.class,
+            Q8_Elder.class
     };
 
-    public abstract IntWritable getType();
+    public CensusInfoFormat() {
+    }
 
-    public abstract Text getKey();
+    public CensusInfoFormat(Writable values) {
+        set(values);
+    }
+
+    public IntWritable getType(){
+        return null;
+    }
+
+    public Text getKey() {
+        return null;
+    }
 
     protected Text getStateAbbr(String lineString) {
         String stateStr = lineString.substring(LineIndex.STATE_START, LineIndex.STATE_END);

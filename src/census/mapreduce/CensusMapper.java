@@ -28,20 +28,20 @@ public class CensusMapper extends Mapper<LongWritable, Text, Text, CensusInfoFor
                 Q2_NeverMarried q2 = new Q2_NeverMarried(lineString);
                 Q3_AgeDistribution q3 = new Q3_AgeDistribution(lineString);
                 Q8_Elder q8 = new Q8_Elder(lineString);
-                context.write(q2.getKey(), q2);
-                context.write(q3.getKey(), q3);
-                context.write(q8.getKey(), q8);
+                context.write(q2.getKey(), new CensusInfoFormat(q2));
+                context.write(q3.getKey(), new CensusInfoFormat(q3));
+                context.write(q8.getKey(), new CensusInfoFormat(q8));
             case 2:
                 Q1_RentAndOwned q1 = new Q1_RentAndOwned(lineString);
                 Q4_RuralAndUrban q4 = new Q4_RuralAndUrban(lineString);
                 Q5_OwnerOccupiedHouseValue q5 = new Q5_OwnerOccupiedHouseValue(lineString);
                 Q6_RentPaid q6 = new Q6_RentPaid(lineString);
                 Q7_RoomNumber q7 = new Q7_RoomNumber(lineString);
-                context.write(q1.getKey(), q1);
-                context.write(q4.getKey(), q4);
-                context.write(q5.getKey(), q5);
-                context.write(q6.getKey(), q6);
-                context.write(q7.getKey(), q7);
+                context.write(q1.getKey(), new CensusInfoFormat(q1));
+                context.write(q4.getKey(), new CensusInfoFormat(q4));
+                context.write(q5.getKey(), new CensusInfoFormat(q5));
+                context.write(q6.getKey(), new CensusInfoFormat(q6));
+                context.write(q7.getKey(), new CensusInfoFormat(q7));
             default:
         }
 

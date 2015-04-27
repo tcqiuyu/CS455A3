@@ -39,7 +39,7 @@ public class CensusReducer extends Reducer<Text, CensusInfoFormat, Text, Text> {
                 }
                 Double rentPercent = rent / (double) (rent + own);
                 Double ownPercent = own / (double) (rent + own);
-                mos.write(key, new Text("Rent: " + rentPercent + "; Own:" + ownPercent), getFilename(key));
+                mos.write(getFilename(key), key, new Text("Rent: " + rentPercent + "; Own:" + ownPercent));
             case "Q2":
                 Long maleNeverMarried = 0L;
                 Long femaleNeverMarried = 0L;
@@ -54,7 +54,7 @@ public class CensusReducer extends Reducer<Text, CensusInfoFormat, Text, Text> {
                 }
                 Double maleNeverMarriedPercent = maleNeverMarried / (double) totalMale;
                 Double femaleNeverMarriedPercent = femaleNeverMarried / (double) totalFemale;
-                mos.write(key, new Text("Male never married: " + maleNeverMarriedPercent + "; Female never married: " + femaleNeverMarriedPercent), getFilename(key));
+                mos.write(getFilename(key), key, new Text("Male never married: " + maleNeverMarriedPercent + "; Female never married: " + femaleNeverMarriedPercent));
             case "Q3":
                 Long maleLessThan18 = 0L;
                 Long male19To29 = 0L;
@@ -81,10 +81,10 @@ public class CensusReducer extends Reducer<Text, CensusInfoFormat, Text, Text> {
                 Double femaleLessThan18Percent = femaleLessThan18 / (double) totalFemale2;
                 Double female19To29Percent = female19To29 / (double) totalFemale2;
                 Double female30To39Percent = female30To39 / (double) totalFemale2;
-                mos.write(key, new Text("Male below 18: " + maleLessThan18Percent + "; Male between 19 and 29: " + male19To29Percent
+                mos.write(getFilename(key), key, new Text("Male below 18: " + maleLessThan18Percent + "; Male between 19 and 29: " + male19To29Percent
                         + "; Male between 30 and 39: " + male30To39Percent + "; Female below 18: " + femaleLessThan18Percent
                         + "; Female between 19 and 29: " + female19To29Percent + "; Female between 30 and 39: "
-                        + female30To39Percent), getFilename(key));
+                        + female30To39Percent));
             case "Q4":
                 Long rural = 0L;
                 Long urban = 0L;
@@ -95,7 +95,7 @@ public class CensusReducer extends Reducer<Text, CensusInfoFormat, Text, Text> {
                 }
                 Double ruralPercent = rural / (double) (rural + urban);
                 Double urbanPercent = urban / (double) (rural + urban);
-                mos.write(key, new Text("Rural: " + ruralPercent + "; Urban: " + urbanPercent), getFilename(key));
+                mos.write(getFilename(key), key, new Text("Rural: " + ruralPercent + "; Urban: " + urbanPercent));
             case "Q5":
             case "Q6":
             case "Q7":
