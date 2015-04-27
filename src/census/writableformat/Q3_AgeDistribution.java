@@ -20,6 +20,8 @@ public class Q3_AgeDistribution extends CensusInfoFormat {
     private LongWritable femaleLessThan18;
     private LongWritable female19To29;
     private LongWritable female30To39;
+    private LongWritable totalMale;
+    private LongWritable totalFemale;
     private IntWritable type = MessageType.Q3_AgeDistribution;
 
     public Q3_AgeDistribution(String lineString) {
@@ -30,6 +32,8 @@ public class Q3_AgeDistribution extends CensusInfoFormat {
         femaleLessThan18 = getContinuousFieldSum(lineString, LineIndex.FEMALE_AGE_LESS_THAN_18_START, LineIndex.FEMALE_AGE_LESS_THAN_18_FIELDS_COUNT);
         female19To29 = getContinuousFieldSum(lineString, LineIndex.FEMALE_AGE_19_TO_29_START, LineIndex.FEMALE_AGE_19_TO_29_FIELDS_COUNT);
         female30To39 = getContinuousFieldSum(lineString, LineIndex.FEMALE_AGE_30_TO_39_START, LineIndex.FEMALE_AGE_30_TO_39_FIELDS_COUNT);
+        totalMale = getContinuousFieldSum(lineString, LineIndex.TOTAL_MALE_START, LineIndex.TOTAL_MALE_FIELDS_COUNT);
+        totalFemale = getContinuousFieldSum(lineString, LineIndex.TOTAL_FEMALE_START, LineIndex.TOTAL_FEMALE_FIELDS_COUNT);
     }
 
     public Text getState() {
@@ -84,6 +88,22 @@ public class Q3_AgeDistribution extends CensusInfoFormat {
         this.female30To39 = female30To39;
     }
 
+    public LongWritable getTotalMale() {
+        return totalMale;
+    }
+
+    public void setTotalMale(LongWritable totalMale) {
+        this.totalMale = totalMale;
+    }
+
+    public LongWritable getTotalFemale() {
+        return totalFemale;
+    }
+
+    public void setTotalFemale(LongWritable totalFemale) {
+        this.totalFemale = totalFemale;
+    }
+
     @Override
     public void readFields(DataInput in) throws IOException {
         state.readFields(in);
@@ -93,6 +113,8 @@ public class Q3_AgeDistribution extends CensusInfoFormat {
         femaleLessThan18.readFields(in);
         female19To29.readFields(in);
         female30To39.readFields(in);
+        totalMale.readFields(in);
+        totalFemale.readFields(in);
     }
 
     @Override
@@ -104,10 +126,17 @@ public class Q3_AgeDistribution extends CensusInfoFormat {
         femaleLessThan18.write(out);
         female19To29.write(out);
         female30To39.write(out);
+        totalMale.write(out);
+        totalFemale.write(out);
     }
 
     @Override
     public IntWritable getType() {
         return type;
+    }
+
+    @Override
+    public Text getKey() {
+        return new Text("Q3_" + state.toString());
     }
 }

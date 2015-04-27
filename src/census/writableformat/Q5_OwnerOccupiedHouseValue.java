@@ -51,4 +51,10 @@ public class Q5_OwnerOccupiedHouseValue extends CensusInfoFormat {
     public void setValues(LongArrayWritable values) {
         this.values = values;
     }
+
+
+    @Override
+    public Text getKey() {
+        return new Text("Q5_" + state.toString());
+    }
 }

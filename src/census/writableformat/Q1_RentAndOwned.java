@@ -68,4 +68,9 @@ public class Q1_RentAndOwned extends CensusInfoFormat {
     public IntWritable getType() {
         return type;
     }
+
+    @Override
+    public Text getKey() {
+        return new Text("Q1_" + state.toString());
+    }
 }

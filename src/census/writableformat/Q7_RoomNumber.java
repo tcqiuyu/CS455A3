@@ -70,8 +70,14 @@ public class Q7_RoomNumber extends CensusInfoFormat {
         type.readFields(in);
     }
 
+
     @Override
     public IntWritable getType() {
         return type;
+    }
+
+    @Override
+    public Text getKey() {
+        return new Text("Q7_" + state.toString());
     }
 }

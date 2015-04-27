@@ -55,6 +55,7 @@ public class Q4_RuralAndUrban extends CensusInfoFormat {
         state.readFields(in);
         rural.readFields(in);
         urban.readFields(in);
+        type.readFields(in);
     }
 
     @Override
@@ -62,5 +63,12 @@ public class Q4_RuralAndUrban extends CensusInfoFormat {
         state.write(out);
         rural.write(out);
         urban.write(out);
+        type.write(out);
+    }
+
+
+    @Override
+    public Text getKey() {
+        return new Text(state.toString() + "_Q4");
     }
 }

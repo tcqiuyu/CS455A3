@@ -19,6 +19,7 @@ public abstract class CensusInfoFormat extends GenericWritable {
 
     public abstract IntWritable getType();
 
+    public abstract Text getKey();
 
     protected Text getStateAbbr(String lineString) {
         String stateStr = lineString.substring(LineIndex.STATE_START, LineIndex.STATE_END);

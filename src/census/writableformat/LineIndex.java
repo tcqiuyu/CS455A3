@@ -9,6 +9,8 @@ public interface LineIndex {
     public static int STATE_END = STATE_START + 2;
     public static int SUMMARY_LEVEL_START = 10;
     public static int SUMMARY_LEVEL_END = SUMMARY_LEVEL_START + 3;
+    public static int LOGICAL_RECORD_PART_START = 24;
+    public static int LOGICAL_RECORD_PART_END = LOGICAL_RECORD_PART_START + 4;
 
     public static int FIELD_SIZE = 9;
 
@@ -34,6 +36,10 @@ public interface LineIndex {
     public static int FEMALE_AGE_19_TO_29_FIELDS_COUNT = 5;
     public static int FEMALE_AGE_30_TO_39_START = FEMALE_AGE_19_TO_29_START + FEMALE_AGE_19_TO_29_FIELDS_COUNT * FIELD_SIZE;
     public static int FEMALE_AGE_30_TO_39_FIELDS_COUNT = 2;
+    public static int TOTAL_MALE_START = 363;
+    public static int TOTAL_MALE_FIELDS_COUNT = 1;
+    public static int TOTAL_FEMALE_START = 372;
+    public static int TOTAL_FEMALE_FIELDS_COUNT = 1;
 
     public static int HOUSE_URBAN_START = 1857;
     public static int HOUSE_URBAN_FIELDS_COUNT = 2;

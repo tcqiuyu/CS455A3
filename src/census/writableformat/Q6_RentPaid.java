@@ -54,4 +54,9 @@ public class  Q6_RentPaid extends CensusInfoFormat {
     public IntWritable getType() {
         return type;
     }
+
+    @Override
+    public Text getKey() {
+        return new Text("Q6_" + state.toString());
+    }
 }

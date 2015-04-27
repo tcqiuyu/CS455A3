@@ -2,8 +2,14 @@ package census;
 
 import census.mapreduce.CensusMapper;
 import census.mapreduce.CensusReducer;
+import census.writableformat.CensusInfoFormat;
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 import java.io.IOException;
 
@@ -12,7 +18,7 @@ import java.io.IOException;
  */
 public class CensusAnalysis {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 
         Configuration configuration = new Configuration();
         Job census_Job = Job.getInstance(configuration, "census");
@@ -21,7 +27,16 @@ public class CensusAnalysis {
         census_Job.setMapperClass(CensusMapper.class);
         census_Job.setReducerClass(CensusReducer.class);
 
+        FileInputFormat.setInputPaths(census_Job, new Path(args[args.length - 2]));
+        FileInputFormat.setInputDirRecursive(census_Job, true);
+        census_Job.setInputFormatClass(TextInputFormat.class);
 
+        census_Job.setMapOutputKeyClass(Text.class);
+        census_Job.setMapOutputValueClass(CensusInfoFormat.class);
+
+        census_Job.setOutputFormatClass(TextOutputFormat.class);
+
+        census_Job.waitForCompletion(true);
     }
 
 }

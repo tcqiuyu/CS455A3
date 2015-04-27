@@ -66,4 +66,9 @@ public class Q8_Elder extends CensusInfoFormat {
         return type;
     }
 
+    @Override
+    public Text getKey() {
+        return new Text("Q8_" + state.toString());
+    }
+
 }
