@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Created by Qiu on 4/26/15.
  */
-public class Q6_RentPaid extends CensusInfoFormat {
+public class  Q6_RentPaid extends CensusInfoFormat {
 
     private Text state;
     private LongArrayWritable rentInfoArray;

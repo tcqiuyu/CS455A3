@@ -49,7 +49,6 @@ public class Q5_OwnerOccupiedHouseValue extends CensusInfoFormat {
     }
 
     public void setValues(LongArrayWritable values) {
-
         this.values = values;
     }
 }

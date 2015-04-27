@@ -13,6 +13,8 @@ public abstract class CensusInfoFormat extends GenericWritable {
             Q3_AgeDistribution.class,
             Q4_RuralAndUrban.class,
             Q5_OwnerOccupiedHouseValue.class,
+            Q6_RentPaid.class,
+            Q7_RoomNumber.class,
     };
 
     public abstract IntWritable getType();

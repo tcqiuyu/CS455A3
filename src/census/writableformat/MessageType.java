@@ -13,4 +13,6 @@ public interface MessageType {
     public static IntWritable Q4_RuralAndUrban = new IntWritable(4);
     public static IntWritable Q5_OwnerOccupiedHouseValue = new IntWritable(5);
     public static IntWritable Q6_RentPaid = new IntWritable(6);
+    public static IntWritable Q7_RoomNumber = new IntWritable(7);
+    public static IntWritable Q8_Elder = new IntWritable(8);
 }

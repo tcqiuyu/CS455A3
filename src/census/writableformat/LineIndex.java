@@ -46,5 +46,11 @@ public interface LineIndex {
     public static int RENT_PAID_START = 3450;
     public static int RENT_PAID_FIELDS_COUNT = 16;
 
+    public static int ROOMS_START = 2388;
+    public static int ROOMS_FIELD_COUNT = 9;
 
+    public static int ELDER_PERSON_START = 1065;
+    public static int ELDER_PERSON_FIELDS_COUNT = 1;
+    public static int TOTAL_PERSON_START = 300;
+    public static int TOTAL_PERSON_FIELDS_COUNT = 1;
 }
