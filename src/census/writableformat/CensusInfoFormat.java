@@ -4,6 +4,8 @@ import org.apache.hadoop.io.*;
 
 /**
  * Created by Qiu on 4/25/15.
+ * Subclass of generic writable class
+ * It wraps different message to a single class and then pass from mapper to reducer
  */
 public class CensusInfoFormat extends GenericWritable {
 

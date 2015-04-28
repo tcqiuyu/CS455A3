@@ -1,5 +1,7 @@
 package census.mapreduce;
 
+import census.structure.AverageRoomsInfo;
+import census.structure.ElderInfo;
 import census.structure.LongArrayWritable;
 import census.writableformat.*;
 import org.apache.hadoop.io.LongWritable;
@@ -9,6 +11,8 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Qiu on 4/23/15.
@@ -16,14 +20,29 @@ import java.io.IOException;
 public class CensusReducer extends Reducer<Text, CensusInfoFormat, Text, Text> {
 
     private MultipleOutputs<Text, Text> mos;
+    private ArrayList<AverageRoomsInfo> averageRoomsInfoArray;
+    private ArrayList<ElderInfo> elderInfoArray;
 
     @Override
     protected void setup(Context context) throws IOException, InterruptedException {
         mos = new MultipleOutputs<>(context);
+        averageRoomsInfoArray = new ArrayList<>();
+        elderInfoArray = new ArrayList<>();
     }
 
     @Override
     protected void cleanup(Context context) throws IOException, InterruptedException {
+
+        Collections.sort(averageRoomsInfoArray);
+        int idx = (int) Math.round(averageRoomsInfoArray.size() * 0.95);
+        AverageRoomsInfo output1 = averageRoomsInfoArray.get(idx);
+        mos.write(getFilename(output1.getKey()), output1.getKey(), new Text("In US, 95% of the houses have less than " +
+                output1.getAverageRooms() + " number of rooms on average"));
+
+        Collections.sort(elderInfoArray);
+        ElderInfo output2 = elderInfoArray.get(elderInfoArray.size() - 1);
+        mos.write(getFilename(output2.getKey()), output2.getKey(), new Text("State " + output2.getKey().toString().split("_")[1] +
+                " records the highest percentage of elderly people: " + output2.getElderPercent()));
         mos.close();
     }
 
@@ -32,6 +51,7 @@ public class CensusReducer extends Reducer<Text, CensusInfoFormat, Text, Text> {
 
         String filename = getFilename(key);
 
+        //based on the key (which contains question info), act differently and write to different files
         switch (filename) {
             case "Q1":
                 Long rent = 0L;
@@ -95,13 +115,15 @@ public class CensusReducer extends Reducer<Text, CensusInfoFormat, Text, Text> {
             case "Q4":
                 Long rural = 0L;
                 Long urban = 0L;
+                Long undefined = 0L;
                 for (CensusInfoFormat val : values) {
                     Q4_RuralAndUrban actualVal = (Q4_RuralAndUrban) val.get();
                     rural += actualVal.getRural().get();
                     urban += actualVal.getUrban().get();
+                    undefined += actualVal.getUndefined().get();
                 }
-                Double ruralPercent = rural / (double) (rural + urban);
-                Double urbanPercent = urban / (double) (rural + urban);
+                Double ruralPercent = rural / (double) (rural + urban + undefined);
+                Double urbanPercent = urban / (double) (rural + urban + undefined);
                 mos.write(getFilename(key), key, new Text("Rural: " + ruralPercent + "; Urban: " + urbanPercent));
                 break;
             case "Q5":
@@ -145,6 +167,9 @@ public class CensusReducer extends Reducer<Text, CensusInfoFormat, Text, Text> {
                     totalHouses += actualVal.getHouseCount().get();
                 }
                 Double avgRooms = totalRooms / (double) totalHouses;
+                Text newKey = new Text(key.toString());
+                AverageRoomsInfo averageRoomsInfo = new AverageRoomsInfo(newKey, avgRooms);
+                averageRoomsInfoArray.add(averageRoomsInfo);
                 mos.write(getFilename(key), key, new Text("Average number of rooms per house: " + avgRooms));
                 break;
             case "Q8":
@@ -155,7 +180,10 @@ public class CensusReducer extends Reducer<Text, CensusInfoFormat, Text, Text> {
                     elder += actualVal.getElderCount().get();
                     totalPerson += actualVal.getTotalPersonsCount().get();
                 }
+                Text newKey2 = new Text(key.toString());
                 Double elderPercent = elder / (double) totalPerson;
+                ElderInfo elderInfo = new ElderInfo(newKey2, elderPercent);
+                elderInfoArray.add(elderInfo);
                 mos.write((getFilename(key)), key, new Text("Percentage of elderly people: " + elderPercent));
             default:
         }

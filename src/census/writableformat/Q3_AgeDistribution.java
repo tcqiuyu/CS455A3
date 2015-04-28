@@ -10,6 +10,8 @@ import java.io.IOException;
 
 /**
  * Created by Qiu on 4/25/15.
+ * Custom structure for Question 3
+ * Used to calculate age distribution
  */
 public class Q3_AgeDistribution extends CensusInfoFormat {
 
@@ -47,64 +49,32 @@ public class Q3_AgeDistribution extends CensusInfoFormat {
         return maleLessThan18;
     }
 
-    public void setMaleLessThan18(LongWritable maleLessThan18) {
-        this.maleLessThan18 = maleLessThan18;
-    }
-
     public LongWritable getMale19To29() {
         return male19To29;
-    }
-
-    public void setMale19To29(LongWritable male19To29) {
-        this.male19To29 = male19To29;
     }
 
     public LongWritable getMale30To39() {
         return male30To39;
     }
 
-    public void setMale30To39(LongWritable male30To39) {
-        this.male30To39 = male30To39;
-    }
-
     public LongWritable getFemaleLessThan18() {
         return femaleLessThan18;
-    }
-
-    public void setFemaleLessThan18(LongWritable femaleLessThan18) {
-        this.femaleLessThan18 = femaleLessThan18;
     }
 
     public LongWritable getFemale19To29() {
         return female19To29;
     }
 
-    public void setFemale19To29(LongWritable female19To29) {
-        this.female19To29 = female19To29;
-    }
-
     public LongWritable getFemale30To39() {
         return female30To39;
-    }
-
-    public void setFemale30To39(LongWritable female30To39) {
-        this.female30To39 = female30To39;
     }
 
     public LongWritable getTotalMale() {
         return totalMale;
     }
 
-    public void setTotalMale(LongWritable totalMale) {
-        this.totalMale = totalMale;
-    }
-
     public LongWritable getTotalFemale() {
         return totalFemale;
-    }
-
-    public void setTotalFemale(LongWritable totalFemale) {
-        this.totalFemale = totalFemale;
     }
 
     @Override

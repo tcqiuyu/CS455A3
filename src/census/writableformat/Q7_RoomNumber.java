@@ -10,6 +10,8 @@ import java.io.IOException;
 
 /**
  * Created by Qiu on 04/26/2015.
+ * Custom structure for Question 7
+ * Used to calculate average rooms per house
  */
 public class Q7_RoomNumber extends CensusInfoFormat {
 

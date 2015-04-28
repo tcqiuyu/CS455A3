@@ -5,6 +5,8 @@ import org.apache.hadoop.io.LongWritable;
 
 /**
  * Created by Qiu on 4/25/15.
+ * LongArrayWritable class.
+ * Used to carry multiple long values
  */
 public class LongArrayWritable extends ArrayWritable {
 

@@ -11,6 +11,8 @@ import java.io.IOException;
 
 /**
  * Created by Qiu on 4/26/15.
+ * Custom structure for Question 6
+ * Used to calculate median rent paid
  */
 public class Q6_RentPaid extends CensusInfoFormat {
 

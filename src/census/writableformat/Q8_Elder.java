@@ -10,6 +10,8 @@ import java.io.IOException;
 
 /**
  * Created by Qiu on 04/26/2015.
+ * Custom structure for Question 8
+ * Used to calculate elderly
  */
 public class Q8_Elder extends CensusInfoFormat {
 

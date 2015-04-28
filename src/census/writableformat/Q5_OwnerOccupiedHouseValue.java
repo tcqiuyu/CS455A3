@@ -11,6 +11,8 @@ import java.io.IOException;
 
 /**
  * Created by Qiu on 4/25/15.
+ * Custom structure of Question 5
+ * Used to calculate median value of the house that occupied by owners
  */
 public class Q5_OwnerOccupiedHouseValue extends CensusInfoFormat {
 

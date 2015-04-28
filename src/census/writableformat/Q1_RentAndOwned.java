@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Created by Qiu on 4/25/15.
  * Custom Structure for Question 1
- * Contains information about rent and owned
+ * Used to calculate percentage of rent/owned
  */
 
 public class Q1_RentAndOwned extends CensusInfoFormat {
@@ -42,18 +42,9 @@ public class Q1_RentAndOwned extends CensusInfoFormat {
         return rent;
     }
 
-    public void setRent(LongWritable rent) {
-        this.rent = rent;
-    }
-
     public LongWritable getOwned() {
         return owned;
     }
-
-    public void setOwned(LongWritable owned) {
-        this.owned = owned;
-    }
-
 
     @Override
     public void write(DataOutput out) throws IOException {

@@ -10,6 +10,8 @@ import java.io.IOException;
 
 /**
  * Created by Qiu on 4/25/15.
+ * Custom structure for Question 4
+ * Used to calculate percentage of rural/urban households
  */
 public class Q4_RuralAndUrban extends CensusInfoFormat {
 
@@ -17,6 +19,7 @@ public class Q4_RuralAndUrban extends CensusInfoFormat {
     private Text state = new Text();
     private LongWritable rural = new LongWritable();
     private LongWritable urban = new LongWritable();
+    private LongWritable undefined = new LongWritable();
 
     public Q4_RuralAndUrban() {
     }
@@ -25,6 +28,7 @@ public class Q4_RuralAndUrban extends CensusInfoFormat {
         state = getStateAbbr(lineString);
         rural = getContinuousFieldSum(lineString, LineIndex.HOUSE_RURAL_START, LineIndex.HOUSE_RURAL_FIELDS_COUNT);
         urban = getContinuousFieldSum(lineString, LineIndex.HOUSE_URBAN_START, LineIndex.HOUSE_URBAN_FIELDS_COUNT);
+        undefined = getContinuousFieldSum(lineString, LineIndex.HOUSE_UNDEFINED_START, LineIndex.HOUSE_UNDEFINED_FIELDS_COUNT);
     }
 
     public Text getState() {
@@ -35,16 +39,12 @@ public class Q4_RuralAndUrban extends CensusInfoFormat {
         return rural;
     }
 
-    public void setRural(LongWritable rural) {
-        this.rural = rural;
-    }
-
     public LongWritable getUrban() {
         return urban;
     }
 
-    public void setUrban(LongWritable urban) {
-        this.urban = urban;
+    public LongWritable getUndefined() {
+        return undefined;
     }
 
     @Override
@@ -58,6 +58,7 @@ public class Q4_RuralAndUrban extends CensusInfoFormat {
         state.readFields(in);
         rural.readFields(in);
         urban.readFields(in);
+        undefined.readFields(in);
         type.readFields(in);
     }
 
@@ -66,6 +67,7 @@ public class Q4_RuralAndUrban extends CensusInfoFormat {
         state.write(out);
         rural.write(out);
         urban.write(out);
+        undefined.write(out);
         type.write(out);
     }
 
