@@ -295,12 +295,12 @@ public class CensusReducer extends Reducer<Text, CensusInfoFormat, Text, Text> {
         }
 
         // find median value's location
-        Long target = 0L;
-        for (int i = 0; i < inputArr.length; i++) {
-            if (target >= median) {
+        Long accumulated = ((LongWritable) inputArr[0]).get();
+        for (int i = 0; i < inputArr.length; ) {
+            if (accumulated >= median) {
                 return i;
             } else {
-                target += ((LongWritable) inputArr[i]).get();
+                accumulated += ((LongWritable) inputArr[++i]).get();
             }
 
         }
